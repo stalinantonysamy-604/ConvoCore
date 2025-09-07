@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ConvoCore♾️</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>ConvoCore♾️</h2>
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar-menu">
+      <button class="menu-item"><i class="fa-solid fa-pen-to-square"></i> New chat</button>
+      <button class="menu-item"><i class="fa-solid fa-magnifying-glass"></i> Search chats</button>
+      <button class="menu-item"><i class="fa-solid fa-book"></i> Library</button>
+    </div>
+
+    <!-- Recent Section -->
+    <div class="recent-toggle">
+      <span><i class="fa-solid fa-clock-rotate-left"></i> Recent</span>
+      <i class="fa-solid fa-chevron-down toggle-icon"></i>
+    </div>
+    <ul class="recent-list">
+      <li><i class="fa-regular fa-message"></i> Project idea chat</li>
+      <li><i class="fa-regular fa-message"></i> Expense tracker notes</li>
+      <li><i class="fa-regular fa-message"></i> UI design discussion</li>
+    </ul>
+  
+    <!-- Settings pinned at bottom -->
+    <a href="settings.html" class="settings">
+      <i class="fa-solid fa-gear"></i> Settings & Help
+    </a>
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+    <!-- ✅ Navbar -->
+    <div class="navbar">
+      <h2 class="nav-title">ConvoCore♾️</h2>
+      <div class="auth-links">
+        <a href="login.html">Login</a> |
+        <a href="signup.html">Signup</a> |
+        <a href="logout.html">Logout</a>
+      </div>
+    </div>
+
+    <!-- ✅ Chat Section -->
+<div class="chat-container">
+  <h1>Hello! How Can I Help You Today?</h1>
+  <div id="chat-box" class="chat-box"></div>
+
+  <!-- Chat Form -->
+  <form id="chat-form" class="chat-form">
+    <!-- Upload Image -->
+    <label for="file-upload" class="icon-btn">
+      <i class="fas fa-plus"></i>
+    </label>
+    <input id="file-upload" type="file" accept="image/*" hidden />
+
+    <!-- Chat Input -->
+    <input id="chat-input" type="text" placeholder="Ask anything" />
+
+    <!-- Voice Button -->
+    <button type="button" id="voice-btn" class="icon-btn">
+      <i class="fas fa-microphone"></i>
+    </button>
+
+    <!-- Send Button -->
+    <button id="send-btn" type="submit" class="icon-btn">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+  </form>
+</div>
+
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
+
+  <!-- Scripts -->
+  <script src="js/chat.js"></script>
+  <script>
+    // Sidebar actions
+    document.querySelector(".sidebar-menu .menu-item:first-child")
+      .addEventListener("click", () => {
+        document.getElementById("chat-box").innerHTML = "";
+      });
+
+    // Toggle recent chats
+    const recentToggle = document.querySelector(".recent-toggle");
+    const recentList = document.querySelector(".recent-list");
+    const toggleIcon = document.querySelector(".toggle-icon");
+
+    recentToggle.addEventListener("click", () => {
+      recentList.classList.toggle("open");
+      toggleIcon.classList.toggle("rotated");
+    });
+  </script>
+</body>
+</html>

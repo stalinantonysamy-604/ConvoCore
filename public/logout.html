@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Convocore — Dashboard</title>
+<style>
+  body{font-family:Arial,sans-serif;background:#f7fafc;padding:20px;margin:0}
+  .card{background:#fff;padding:24px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.08);max-width:400px;margin:80px auto;text-align:center}
+  button{margin-top:20px;padding:10px 16px;border:0;border-radius:8px;background:#000;color:#fff;font-weight:600;cursor:pointer}
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>Welcome to Convocore 🎉</h2>
+    <p id="welcome"></p>
+    <button id="logoutBtn">Logout</button>
+  </div>
+
+<script>
+// check login
+if(localStorage.getItem("loggedIn") !== "true"){
+  window.location.href = "login.html";
+}
+
+// show username
+const user = JSON.parse(localStorage.getItem("user"));
+if(user){
+  document.getElementById("welcome").textContent = "Hello, " + user.displayName + "!";
+}
+
+// logout
+document.getElementById("logoutBtn").addEventListener("click", function(){
+  localStorage.removeItem("loggedIn");
+  // store logout message
+  localStorage.setItem("logoutMsg", "✅ Successfully logged out!");
+  window.location.href = "login.html";
+});
+</script>
+</body>
+</html>
