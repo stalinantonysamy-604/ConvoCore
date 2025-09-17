@@ -1,25 +1,139 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Login — Chatbot</title>
-<style>
-  body{font-family:Inter,Arial,sans-serif;background:#f7fafc;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}
-  .card{background:#fff;padding:24px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.08);width:360px}
-  h2{margin:0 0 12px;font-size:20px}
-  label{display:block;margin-top:10px;font-size:13px;color:#000}
-  input{width:100%;padding:10px;margin-top:6px;border:1px solid #dfe4ea;border-radius:8px;font-size:14px}
-  .actions{margin-top:16px}
-  button{width:100%;padding:10px;border:0;border-radius:8px;background:#000;color:#fff;font-weight:600;cursor:pointer}
-  .error{color:#dc2626;font-size:13px;margin-top:6px}
-  .muted{font-size:13px;color:#6b7280;margin-top:8px;text-align:center}
-  .flex-between{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:13px}
-  .forgot{color:#000;text-decoration:none}
-  .forgot:hover{text-decoration:underline}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login — Chatbot</title>
+  <style>
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background: #f7fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column
+    }
+
+    /* Header Nav */
+    .nav {
+      margin-bottom: 20px;
+    }
+
+    .nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav li {
+      display: inline;
+    }
+
+    .nav a {
+      color: #000;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+
+    .nav a:hover {
+      background: #e5e7eb;
+    }
+
+    .card {
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      width: 360px
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 20px
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-size: 13px;
+      color: #000
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #dfe4ea;
+      border-radius: 8px;
+      font-size: 14px
+    }
+
+    .actions {
+      margin-top: 16px
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border: 0;
+      border-radius: 8px;
+      background: #000;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer
+    }
+
+    .error {
+      color: #dc2626;
+      font-size: 13px;
+      margin-top: 6px
+    }
+
+    .muted {
+      font-size: 13px;
+      color: #6b7280;
+      margin-top: 8px;
+      text-align: center
+    }
+
+    .flex-between {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      font-size: 13px
+    }
+
+    .forgot {
+      color: #000;
+      text-decoration: none
+    }
+
+    .forgot:hover {
+      text-decoration: underline
+    }
+  </style>
 </head>
+
 <body>
+
+  <!-- Header Navigation -->
+  <div class="nav">
+    <ul>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="signup.html">SignUp</a></li>
+    </ul>
+  </div>
+
+  <!-- Login Form -->
   <form id="loginForm" class="card" novalidate>
     <h2>Login to your account</h2>
 
@@ -44,28 +158,29 @@
     <div class="muted">Don’t have an account? <a href="signup.html">Sign up</a></div>
   </form>
 
-<script>
-document.getElementById('loginForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  const msg = document.getElementById('message');
-  msg.textContent = '';
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const msg = document.getElementById('message');
+      msg.textContent = '';
 
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value;
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
 
-  const user = JSON.parse(localStorage.getItem("userChat"));
+      const user = JSON.parse(localStorage.getItem("userChat"));
 
-  if(!user || user.email !== email || user.password !== password){
-    msg.textContent = "Invalid email or password.";
-    return;
-  }
+      if (!user || user.email !== email || user.password !== password) {
+        msg.textContent = "Invalid email or password.";
+        return;
+      }
 
-  // Save session
-  localStorage.setItem("loggedIn", "true");
+      // Save session
+      localStorage.setItem("loggedIn", "true");
 
-  // Redirect to dashboard
-  window.location.href = "convocore.html";
-});
-</script>
+      // Redirect to dashboard
+      window.location.href = "convocore.html";
+    });
+  </script>
 </body>
+
 </html>
